@@ -2,8 +2,8 @@ com/hsl/controller/CityController.java
  com.hsl.controller.CityController
 com/hsl/model/City.java
  com.hsl.model.City
-com/hsl/repository/ICityRepository.java
- com.hsl.repository.ICityRepository
+com/hsl/service/CityService.java
+ com.hsl.service.CityService
 com/hsl/service/NationService.java
  com.hsl.service.NationService
 com/hsl/service/ICityService.java
@@ -14,14 +14,14 @@ com/hsl/service/INationService.java
  com.hsl.service.INationService
 com/hsl/model/Nation.java
  com.hsl.model.Nation
-com/hsl/controller/NationController.java
- com.hsl.controller.NationController
+com/hsl/repository/ICityRepository.java
+ com.hsl.repository.ICityRepository
 com/hsl/repository/INationRepository.java
  com.hsl.repository.INationRepository
 com/hsl/service/IGeneralService.java
  com.hsl.service.IGeneralService
-com/hsl/service/CityService.java
- com.hsl.service.CityService
+com/hsl/controller/SecurityController.java
+ com.hsl.controller.SecurityController
 com/hsl/configuration/AppConfig.java
  com.hsl.configuration.AppConfig
 com/hsl/service/AppUserService.java
@@ -38,8 +38,8 @@ com/hsl/model/User.java
  com.hsl.model.User
 com/hsl/model/UserPrinciple.java
  com.hsl.model.UserPrinciple
-com/hsl/controller/SecurityController.java
- com.hsl.controller.SecurityController
+com/hsl/controller/NationController.java
+ com.hsl.controller.NationController
 com/hsl/configuration/AppInit.java
  com.hsl.configuration.AppInit
 com/hsl/configuration/SecurityConfig.java

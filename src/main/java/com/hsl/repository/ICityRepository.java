@@ -10,5 +10,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ICityRepository extends PagingAndSortingRepository<City, Long> {
     Iterable<City> findAllByNation(Nation nation);
+    Page<City> findAllByNation(Nation nation, Pageable pageable);
     Page<City> findAllByNameContaining(String ame, Pageable pageable);
 }

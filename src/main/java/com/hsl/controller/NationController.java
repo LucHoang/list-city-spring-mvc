@@ -5,11 +5,11 @@ import com.hsl.model.Nation;
 import com.hsl.service.CityService;
 import com.hsl.service.INationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Optional;
@@ -92,16 +92,24 @@ public class NationController {
     }
 
     @GetMapping("/view-nation/{id}")
-    public ModelAndView viewnation(@PathVariable("id") Long id){
+    public ModelAndView viewnation(@PathVariable("id") Long id, @RequestParam("text") Optional<String> search, @PageableDefault(sort = {"name"}, value = 5) Pageable pageable){
+        Page<City> cities;
+        if(search.isPresent()){
+            cities = cityService.findAllByNameContaining(search.get(), pageable);
+        } else {
+            cities = cityService.findAll(pageable);
+        }
+
         Optional<Nation> nationOptional = nationService.findById(id);
         if(!nationOptional.isPresent()){
             return new ModelAndView("/error.404");
         }
 
-        Iterable<City> cities = cityService.findAllByNation(nationOptional.get());
+//        Iterable<City> cities = cityService.findAllByNation(nationOptional.get());
+        cities = cityService.findAllByNation(nationOptional.get(), pageable);
 
-        ModelAndView modelAndView = new ModelAndView("/nation/view");
-        modelAndView.addObject("nation", nationOptional.get());
+        ModelAndView modelAndView = new ModelAndView("/city/index");
+        modelAndView.addObject("nationView", nationOptional.get());
         modelAndView.addObject("cities", cities);
         return modelAndView;
     }

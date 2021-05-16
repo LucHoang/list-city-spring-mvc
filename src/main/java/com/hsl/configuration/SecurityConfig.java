@@ -31,7 +31,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/home").access("hasRole('MEMBER')")
-                .antMatchers("/admin/**","/create-city/**","/edit-city/**","/delete-city/**").access("hasRole('ADMIN')")
+                .antMatchers("/admin/**","/create-city/**","/edit-city/**","/delete-city/**",
+                        "/delete-nation/**","/edit-nation/**","/create-nation/**","/nations/**").access("hasRole('ADMIN')")
                 .antMatchers("/dba/**").access("hasRole('ADMIN') and hasRole('DBA')")
                 .and().formLogin().successHandler(new CustomSuccessHandler())
                 .usernameParameter("ssoId").passwordParameter("password")

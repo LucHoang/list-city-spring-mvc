@@ -226,12 +226,16 @@ integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8t
               </div>
           </div>
 
-          <div class="col-auto" sec:authorize="isAnonymous()">
+          <div class="col-auto" sec:authorize="isAnonymous()" style="text-align: center">
               <a th:href="@{/admin}" class="button button" style="text-decoration: none; background-color: #4CAF50">Sign in</a>
           </div>
-          <div class="col-auto" sec:authorize="isAuthenticated()">
+          <div class="col-auto" sec:authorize="isAuthenticated()" style="text-align: center">
               <a th:href="@{/logout}" class="button button" style="text-decoration: none; background-color: #4CAF50">Logout</a>
+              <a th:href="@{/nations}" class="button button" style="text-decoration: none; background-color: #4CAF50">Nation Manager</a>
           </div>
+<!--          <div class="col-auto" sec:authorize="isAuthenticated()">-->
+<!--              <a th:href="@{/nations}" class="button button" style="text-decoration: none; background-color: #4CAF50">Nation Manager</a>-->
+<!--          </div>-->
         <div class="row">
 <!--          <%&#45;&#45;                    <div class="col-sm-8"><a href="product?action=create" class="button button" style="text-decoration: none">+ Add new product</a></div>&#45;&#45;%>-->
           <div class="card-body row no-gutters align-items-center"><a th:href="@{/create-city}" class="button button" style="text-decoration: none">+ Add new product</a></div>
@@ -283,7 +287,10 @@ integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8t
               <td>
               <a style="color: black" th:href="@{/view-city/{id}(id=${row.getId()})}" th:text="${row.name}"></a>
               </td>
-              <td th:text="${row.nation.name}"></td>
+<!--              <td th:text="${row.nation.name}"></td>-->
+              <td th:if="${row.nation}">
+                  <a style="color: black" th:href="@{/view-nation/__${row.nation.id}__ }" th:text="${row.nation.name}"></a>
+              </td>
 <!--              <td th:text="${row.getQuantity()}"></td>-->
 <!--              <td th:text="${row.getColor()}"></td>-->
 <!--              <td><img width="100" height="100" th:src="@{'/Tai-ve/' + ${row.image}}" alt=""></td>-->

@@ -45,6 +45,10 @@ public class CityService implements ICityService {
         return cityRepository.findAllByNation(nation);
     }
 
+    public Page<City> findAllByNation(Nation nation, Pageable pageable) {
+        return cityRepository.findAllByNation(nation, pageable);
+    }
+
     @Override
     public Page<City> findAllByNameContaining(String name, Pageable pageable) {
         return cityRepository.findAllByNameContaining(name, pageable);
